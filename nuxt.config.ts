@@ -6,12 +6,18 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/icon',
     '@nuxtjs/google-fonts',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    'nuxt-swiper'
   ],
+
+  tailwindcss: {
+    configPath: './tailwind.config.ts'
+  },
 
   googleFonts: {
     families: {
-      Nunito: [400, 600, 700, 800]
+      Nunito: [400, 600, 700, 800],
+      Rochester: [400]
     },
     display: 'swap',
     download: false,

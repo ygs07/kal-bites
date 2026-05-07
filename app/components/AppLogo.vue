@@ -5,7 +5,7 @@
       alt="Kal Bites"
       class="h-auto w-32 sm:w-40"
     >
-    <p class="text-2xl font-extrabold leading-none text-[#2f2118] sm:text-3xl">
+    <p class="font-display text-4xl leading-none text-primary sm:text-5xl">
       KalBites
     </p>
   </div>
