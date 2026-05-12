@@ -104,7 +104,9 @@ onMounted(() => {
             <div
               class="marquee-content-x flex gap-4"
               :class="
-                rowIdx % 2 === 0 ? 'animate-marquee-x' : 'animate-marquee-x-reverse'
+                rowIdx % 2 === 0
+                  ? 'animate-marquee-x'
+                  : 'animate-marquee-x-reverse'
               "
               :style="{ animationDuration: `${20 + rowIdx * 10}s` }"
             >
