@@ -6,6 +6,39 @@ type GalleryImage = {
   heightClass: string;
 };
 
+type ContactLink = {
+  label: string;
+  href: string;
+  icon: string;
+  external?: boolean;
+};
+
+const contactLinks: ContactLink[] = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/Kal_bites",
+    icon: "simple-icons:instagram",
+    external: true,
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@Kal_bites",
+    icon: "simple-icons:tiktok",
+    external: true,
+  },
+  {
+    label: "Email",
+    href: "mailto:contactkalbites@gmail.com",
+    icon: "lucide:mail",
+  },
+  {
+    label: "WhatsApp",
+    href: "https://wa.me/2349093922012",
+    icon: "simple-icons:whatsapp",
+    external: true,
+  },
+];
+
 const galleryImages: GalleryImage[] = [
   { src: "/images/IMG_7065.jpeg", heightClass: "h-64 sm:h-72 lg:h-80" },
   { src: "/images/IMG_8669.jpg", heightClass: "h-80 sm:h-96 lg:h-[28rem]" },
@@ -88,6 +121,26 @@ onMounted(() => {
         <footer class="mt-8 text-sm font-semibold text-primary/80 sm:text-base">
           Kal Bites is coming soon.
         </footer>
+        <nav
+          class="mt-6 flex max-w-md flex-wrap justify-center gap-3"
+          aria-label="Kal Bites social links"
+        >
+          <a
+            v-for="link in contactLinks"
+            :key="link.href"
+            :href="link.href"
+            :target="link.external ? '_blank' : undefined"
+            :rel="link.external ? 'noreferrer' : undefined"
+            class="inline-flex h-10 items-center gap-2 rounded-full bg-secondary/80 px-4 text-sm font-bold text-primary shadow-sm shadow-primary/15 ring-1 ring-primary/15 backdrop-blur transition hover:bg-primary hover:text-secondary"
+          >
+            <Icon
+              :name="link.icon"
+              class="size-4"
+              aria-hidden="true"
+            />
+            <span>{{ link.label }}</span>
+          </a>
+        </nav>
       </section>
 
       <section
