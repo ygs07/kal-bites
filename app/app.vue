@@ -26,11 +26,11 @@ const contactLinks: ContactLink[] = [
     icon: "simple-icons:tiktok",
     external: true,
   },
-  {
-    label: "Email",
-    href: "mailto:contactkalbites@gmail.com",
-    icon: "lucide:mail",
-  },
+  // {
+  //   label: "Email",
+  //   href: "mailto:contactkalbites@gmail.com",
+  //   icon: "lucide:mail",
+  // },
   {
     label: "WhatsApp",
     href: "https://wa.me/2349093922012",
@@ -106,119 +106,123 @@ onMounted(() => {
 <template>
   <div class="min-h-screen bg-secondary font-sans text-primary">
     <NuxtRouteAnnouncer />
-    <main
-      class="grid min-h-screen lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]"
-    >
+    <main>
       <section
-        class="flex min-h-[56vh] flex-col items-center justify-center bg-secondary bg-[url('/images/bg-pattern-1.svg')] px-6 py-12 text-center sm:px-10 lg:sticky lg:top-0 lg:min-h-screen lg:px-14"
+        class="grid min-h-screen lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]"
       >
-        <AppLogo class="mb-10" />
-        <p
-          class="max-w-xl text-5xl font-extrabold leading-none sm:text-7xl md:text-8xl"
+        <section
+          class="flex min-h-[56vh] flex-col items-center justify-center bg-secondary bg-[url('/images/bg-pattern-1.svg')] px-6 py-12 text-center sm:px-10 lg:sticky lg:top-0 lg:min-h-screen lg:px-14"
         >
-          Something is Baking
-        </p>
-        <footer class="mt-8 text-sm font-semibold text-primary/80 sm:text-base">
-          Kal Bites is coming soon.
-        </footer>
-        <nav
-          class="mt-6 flex max-w-md flex-wrap justify-center gap-3"
-          aria-label="Kal Bites social links"
-        >
-          <a
-            v-for="link in contactLinks"
-            :key="link.href"
-            :href="link.href"
-            :target="link.external ? '_blank' : undefined"
-            :rel="link.external ? 'noreferrer' : undefined"
-            class="inline-flex h-10 items-center gap-2 rounded-full bg-secondary/80 px-4 text-sm font-bold text-primary shadow-sm shadow-primary/15 ring-1 ring-primary/15 backdrop-blur transition hover:bg-primary hover:text-secondary"
+          <AppLogo />
+          <p
+            class="max-w-xl text-5xl font-extrabold leading-none sm:text-7xl md:text-8xl"
           >
-            <Icon
-              :name="link.icon"
-              class="size-4"
-              aria-hidden="true"
-            />
-            <span>{{ link.label }}</span>
-          </a>
-        </nav>
-      </section>
-
-      <section
-        class="relative overflow-hidden bg-primary/10 lg:h-screen lg:px-4"
-        aria-label="Kal Bites bakery gallery"
-      >
-        <!-- Mobile/Tablet Horizontal Infinite Scroll -->
-        <div class="flex flex-col gap-4 py-8 lg:hidden">
-          <div
-            v-for="(row, rowIdx) in [row1, row2]"
-            :key="rowIdx"
-            class="marquee-container-x"
+            Something is Baking
+          </p>
+          <footer
+            class="mt-8 text-sm font-semibold text-primary/80 sm:text-base"
           >
-            <div
-              class="marquee-content-x flex gap-4"
-              :class="
-                rowIdx % 2 === 0
-                  ? 'animate-marquee-x'
-                  : 'animate-marquee-x-reverse'
-              "
-              :style="{ animationDuration: `${20 + rowIdx * 10}s` }"
+            Launching Soon...
+          </footer>
+          <nav
+            class="mt-6 flex max-w-md flex-wrap justify-center gap-3"
+            aria-label="Kal Bites social links"
+          >
+            <a
+              v-for="link in contactLinks"
+              :key="link.href"
+              :href="link.href"
+              :target="link.external ? '_blank' : undefined"
+              :rel="link.external ? 'noreferrer' : undefined"
+              class="inline-flex h-10 items-center gap-2 rounded-full bg-secondary/80 px-4 text-sm font-bold text-primary shadow-sm shadow-primary/15 ring-1 ring-primary/15 backdrop-blur transition hover:bg-primary hover:text-secondary"
             >
-              <!-- First set -->
-              <img
-                v-for="(image, imgIdx) in row"
-                :key="`${image.src}-m1`"
-                :src="image.src"
-                alt="Kal Bites bakery item"
-                class="h-48 w-64 flex-shrink-0 rounded-lg bg-primary/10 object-cover shadow-md shadow-primary/20"
-              />
-              <!-- Duplicate set for seamless loop -->
-              <img
-                v-for="(image, imgIdx) in row"
-                :key="`${image.src}-m2`"
-                :src="image.src"
-                alt="Kal Bites bakery item"
-                class="h-48 w-64 flex-shrink-0 rounded-lg bg-primary/10 object-cover shadow-md shadow-primary/20"
-              />
+              <Icon :name="link.icon" class="size-4" aria-hidden="true" />
+              <span>{{ link.label }}</span>
+            </a>
+          </nav>
+        </section>
+
+        <section
+          class="relative overflow-hidden bg-primary/10 lg:h-screen lg:px-4"
+          aria-label="Kal Bites bakery gallery"
+        >
+          <!-- Mobile/Tablet Horizontal Infinite Scroll -->
+          <div class="flex flex-col gap-4 py-8 lg:hidden">
+            <div
+              v-for="(row, rowIdx) in [row1, row2]"
+              :key="rowIdx"
+              class="marquee-container-x"
+            >
+              <div
+                class="marquee-content-x flex gap-4"
+                :class="
+                  rowIdx % 2 === 0
+                    ? 'animate-marquee-x'
+                    : 'animate-marquee-x-reverse'
+                "
+                :style="{ animationDuration: `${20 + rowIdx * 10}s` }"
+              >
+                <!-- First set -->
+                <img
+                  v-for="(image, imgIdx) in row"
+                  :key="`${image.src}-m1`"
+                  :src="image.src"
+                  alt="Kal Bites bakery item"
+                  class="h-48 w-64 flex-shrink-0 rounded-lg bg-primary/10 object-cover shadow-md shadow-primary/20"
+                />
+                <!-- Duplicate set for seamless loop -->
+                <img
+                  v-for="(image, imgIdx) in row"
+                  :key="`${image.src}-m2`"
+                  :src="image.src"
+                  alt="Kal Bites bakery item"
+                  class="h-48 w-64 flex-shrink-0 rounded-lg bg-primary/10 object-cover shadow-md shadow-primary/20"
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Desktop Vertical Infinite Scroll -->
-        <div class="hidden h-full grid-cols-3 gap-4 lg:grid">
-          <div
-            v-for="(col, colIdx) in [column1, column2, column3]"
-            :key="colIdx"
-            class="marquee-container"
-          >
+          <!-- Desktop Vertical Infinite Scroll -->
+          <div class="hidden h-full grid-cols-3 gap-4 lg:grid">
             <div
-              class="marquee-content flex flex-col gap-4"
-              :class="
-                colIdx % 2 === 0 ? 'animate-marquee' : 'animate-marquee-reverse'
-              "
-              :style="{ animationDuration: `${30 + colIdx * 5}s` }"
+              v-for="(col, colIdx) in [column1, column2, column3]"
+              :key="colIdx"
+              class="marquee-container"
             >
-              <!-- First set -->
-              <img
-                v-for="(image, imgIdx) in col"
-                :key="`${image.src}-1`"
-                :src="image.src"
-                alt="Kal Bites bakery item"
-                class="w-full rounded-xl bg-primary/10 object-cover shadow-lg shadow-primary/20 transition-transform duration-500 hover:scale-[1.05] hover:z-10"
-                :class="image.heightClass"
-              />
-              <!-- Duplicate set for seamless loop -->
-              <img
-                v-for="(image, imgIdx) in col"
-                :key="`${image.src}-2`"
-                :src="image.src"
-                alt="Kal Bites bakery item"
-                class="w-full rounded-xl bg-primary/10 object-cover shadow-lg shadow-primary/20 transition-transform duration-500 hover:scale-[1.05] hover:z-10"
-                :class="image.heightClass"
-              />
+              <div
+                class="marquee-content flex flex-col gap-4"
+                :class="
+                  colIdx % 2 === 0
+                    ? 'animate-marquee'
+                    : 'animate-marquee-reverse'
+                "
+                :style="{ animationDuration: `${30 + colIdx * 5}s` }"
+              >
+                <!-- First set -->
+                <img
+                  v-for="(image, imgIdx) in col"
+                  :key="`${image.src}-1`"
+                  :src="image.src"
+                  alt="Kal Bites bakery item"
+                  class="w-full rounded-xl bg-primary/10 object-cover shadow-lg shadow-primary/20 transition-transform duration-500 hover:z-10 hover:scale-[1.05]"
+                  :class="image.heightClass"
+                />
+                <!-- Duplicate set for seamless loop -->
+                <img
+                  v-for="(image, imgIdx) in col"
+                  :key="`${image.src}-2`"
+                  :src="image.src"
+                  alt="Kal Bites bakery item"
+                  class="w-full rounded-xl bg-primary/10 object-cover shadow-lg shadow-primary/20 transition-transform duration-500 hover:z-10 hover:scale-[1.05]"
+                  :class="image.heightClass"
+                />
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </section>
+      <MenuSection />
+      <OrderForm />
     </main>
   </div>
 </template>
